@@ -4,10 +4,26 @@ print "Enter month(1 to 12):"
 month = gets.to_i
 print "Enter year:"
 year = gets.to_i
-days_by_months = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+days_in_months = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-if (year % 4 == 0 || year % 400 == 0) && year % 100 != 0
-  days_by_months[2] = 29
+if year % 4 == 0 && year % 100 != 0
+  days_in_months[2] = 29
+elsif year % 400 == 0
+  days_in_months[2] = 29
 end
 
-#посчитать все дни до введенного месяца и прибавить оставшиеся дни
+if month == 1
+  puts "Date index number is #{day}"
+  exit
+end
+
+date_index = 0
+count = 0
+days_in_months.each do |x|
+  date_index += x
+  break if count == month-1
+  count +=1
+end
+date_index += day
+
+puts "Date index number is #{date_index}"
