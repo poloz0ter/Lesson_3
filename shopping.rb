@@ -10,16 +10,14 @@ loop do
   print "enter Number Of Purchases: "
   quantity = gets.to_f
 
-  basket[name] = {price_per_one => quantity}
+  basket[name] = {price_per_one: price_per_one, quantity: quantity}   #item = {price: price, quantity: quantity}
 end
-
 puts "Your buy: #{basket}"
+
 total_price = 0
 basket.each do |name, value|
-  value.each do |price, quantity|
-  puts "Total amount for the goods: \"#{name}\"--> $#{price * quantity}"
-  total_price += price * quantity
-  end
+  price = value[:price_per_one] * value[:quantity]
+  total_price += price
+  puts "Total amount for the goods: \"#{name}\"--> $#{price}"
+  puts "Total price: $#{total_price}"
 end
-
-puts "Total basket price: $#{total_price}"
