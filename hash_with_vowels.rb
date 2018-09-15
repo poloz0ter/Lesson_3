@@ -1,12 +1,10 @@
 alphabet = ("a".."z")
 vowels = ["a", "e", "i", "o", "u"]
 vowels_hash = {}
-count = 0
 
-alphabet.each do |letter|
-  count += 1
+alphabet.each_with_index do |letter,index|
   if vowels.include?(letter)
-    vowels_hash[letter] = count
+    vowels_hash[letter] = index + 1
   else
     next
   end 
